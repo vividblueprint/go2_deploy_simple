@@ -1,0 +1,18 @@
+[project]
+name = "go2-deploy-simple"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "mujoco>=4.0.1",
+    "numpy>=2.4.6",
+    "onnx>=1.23.2",
+    "onnxruntime>=1.32.0",
+    "pygame>=2.6.1",
+    "pyyaml>=6.0.3",
+    "scipy>=1.17.1",
+    "torch>=2.15.0",
+    "unitree-sdk2-go2",
+]
+
+[tool.uv.sources]
+unitree-sdk2-go2 = { path = "../unitree_sdk2_go2", editable = true }

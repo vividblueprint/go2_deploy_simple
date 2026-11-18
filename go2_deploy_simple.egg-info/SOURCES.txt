@@ -1,0 +1,8 @@
+README.md
+pyproject.toml
+go2_deploy_simple.egg-info/PKG-INFO
+go2_deploy_simple.egg-info/SOURCES.txt
+go2_deploy_simple.egg-info/dependency_links.txt
+go2_deploy_simple.egg-info/requires.txt
+go2_deploy_simple.egg-info/top_level.txt
+tests/test_policy.py
