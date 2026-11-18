@@ -1,7 +1,40 @@
+
+<div align="center">
+
+<h1 align="center" >
+
+<img width="25px" src="https://em-content.zobj.net/source/microsoft-teams/337/heart-with-ribbon_1f49d.png"/>
+<img width="25px" src="https://em-content.zobj.net/source/microsoft-teams/337/heart-with-ribbon_1f49d.png"/>
+<img width="25px" src="https://em-content.zobj.net/source/microsoft-teams/337/heart-with-ribbon_1f49d.png"/>
+<b>GO2 Simple Deploy sim2sim/sim2real</b>
+<img width="25px" src="https://em-content.zobj.net/source/microsoft-teams/337/heart-with-ribbon_1f49d.png"/>
+<img width="25px" src="https://em-content.zobj.net/source/microsoft-teams/337/heart-with-ribbon_1f49d.png"/>
+<img width="25px" src="https://em-content.zobj.net/source/microsoft-teams/337/heart-with-ribbon_1f49d.png"/>
+
+</h1>
+
+[![GitHub](https://img.shields.io/badge/GitHub-vividblueprint-181717?logo=github&logoColor=white)](https://github.com/vividblueprint)
+[![Issues](https://img.shields.io/github/issues/vividblueprint/go2_deploy_simple?style=flat)](https://github.com/vividblueprint/go2_deploy_simple/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/vividblueprint/go2_deploy_simple?style=flat)](https://github.com/vividblueprint/go2_deploy_simple/pulls)
+[![Contributors](https://img.shields.io/github/contributors/vividblueprint/go2_deploy_simple?style=flat)](https://github.com/vividblueprint/go2_deploy_simple/graphs/contributors)
+[![Stars](https://img.shields.io/github/stars/vividblueprint/go2_deploy_simple?style=flat)](https://github.com/vividblueprint/go2_deploy_simple/stargazers)
+[![Forks](https://img.shields.io/github/forks/vividblueprint/go2_deploy_simple?style=flat)](https://github.com/vividblueprint/go2_deploy_simple/forks)
+[![Watchers](https://img.shields.io/github/watchers/vividblueprint/go2_deploy_simple?style=flat)](https://github.com/vividblueprint/go2_deploy_simple/watchers)
+[![Last Commit](https://img.shields.io/github/last-commit/vividblueprint/go2_deploy_simple?style=flat)](https://github.com/vividblueprint/go2_deploy_simple/commits)
+[![Monthly Commits](https://img.shields.io/github/commit-activity/m/vividblueprint/go2_deploy_simple?style=flat)](https://github.com/vividblueprint/go2_deploy_simple/commits)
+[![Languages](https://img.shields.io/github/languages/count/vividblueprint/go2_deploy_simple?style=flat)](https://github.com/vividblueprint/go2_deploy_simple)
+[![Code Size](https://img.shields.io/github/languages/code-size/vividblueprint/go2_deploy_simple?style=flat)](https://github.com/vividblueprint/go2_deploy_simple)
+[![Repo Size](https://img.shields.io/github/repo-size/vividblueprint/go2_deploy_simple?style=flat)](https://github.com/vividblueprint/go2_deploy_simple)
+[![Total Commits](https://img.shields.io/github/commit-activity/t/vividblueprint/go2_deploy_simple?style=flat&label=Total%20Commits)](https://github.com/vividblueprint/go2_deploy_simple/commits)
+[![Files](https://img.shields.io/github/directory-file-count/vividblueprint/go2_deploy_simple?type=file&style=flat)](https://github.com/vividblueprint/go2_deploy_simple/tree/HEAD)
+[![License](https://img.shields.io/github/license/vividblueprint/go2_deploy_simple?style=flat)](https://github.com/vividblueprint/go2_deploy_simple/blob/HEAD/LICENSE)
+
+</div>
+
 # go2_deploy_simple
 
 Run the original TS, EE, and WaQ `.pt` policies with `unitree_sdk2_go2` in MuJoCo or on a real Go2.
-Uses **Python 3.11+** and **CycloneDDS 11.1.0**. Model weights are unchanged.
+Uses **Python 3.11** and **CycloneDDS 11.1.0**. Model weights are unchanged.
 
 ## Install
 
@@ -9,7 +42,16 @@ Requires [uv](https://docs.astral.sh/uv/getting-started/installation/), the sibl
 `unitree_sdk2_go2` source folder, and the existing files in `models/`.
 
 ```bash
-cd /home/shamim/playground/unitree_go2/shamim/go2_deploy_simple
+# make a directory
+mkdir ~/unitree_go2
+cd ~/unitree_go2
+
+# clone repos
+git clone https://github.com/vividblueprint/go2_mujoco.git
+git clone https://github.com/vividblueprint/unitree_sdk2_go2.git
+git clone https://github.com/vividblueprint/go2_deploy_simple.git
+
+cd ~/unitree_go2/go2_deploy_simple
 uv sync
 ```
 
@@ -22,14 +64,14 @@ separate environment.
 Start the installed simulator in terminal 1:
 
 ```bash
-cd /home/shamim/playground/unitree_go2/shamim/go2_deploy_simple
+cd ~/unitree_go2/go2_deploy_simple
 uv run ../go2_mujoco/simulate.py
 ```
 
 Start the policy in terminal 2:
 
 ```bash
-cd /home/shamim/playground/unitree_go2/shamim/go2_deploy_simple
+cd ~/unitree_go2/go2_deploy_simple
 uv run deploy.py --policy ts
 ```
 
@@ -56,7 +98,7 @@ Ethernet adapter on the robot's subnet using your robot's network settings.
 Find your adapter name with `ip -br address`, then replace `enp3s0` below:
 
 ```bash
-cd /home/shamim/playground/unitree_go2/shamim/go2_deploy_simple
+cd ~/unitree_go2/go2_deploy_simple
 uv run deploy.py --real --interface enp3s0 --policy ts
 ```
 
@@ -106,7 +148,10 @@ are `kp=20`, `kd=0.5` in both modes. `models/SHA256.json` records the copied mod
 The comparison tests need the original deployment source at its relocated path:
 
 ```bash
-GO2_ORIGINAL_DEPLOY=/home/shamim/playground/unitree_go2/unitree/go2_deploy_python \
+cd ~/unitree_go2/go2_deploy_simple
+git clone https://github.com/unitreerobotics/unitree_sdk2_python.git
+
+GO2_ORIGINAL_DEPLOY=~/unitree_go2/go2_deploy_python \
   .venv/bin/python -m unittest discover -s tests -v
 ```
 
